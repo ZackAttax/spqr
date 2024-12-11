@@ -8,3 +8,25 @@ align-items: flex-start;
 gap: 10px;
 flex-shrink: 0;
 }
+
+.Shield .group {
+    width: 404px;
+    height: 208px;
+}
+
+.Shield h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.Shield input {
+    display: flex;
+width: 420px;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--8, 8px);
+}

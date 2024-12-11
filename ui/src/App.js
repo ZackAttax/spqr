@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { connect, disconnect } from "starknetkit";
+import Shield from "./Shield";
 import "./App.css";
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
           )}
         </div>
       </div>
+      <Shield />
     </div>
   );
 }
