@@ -2,6 +2,59 @@
 version = 1
 
 [[package]]
+name = "integrity"
+version = "2.0.0"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:f5e91cd5280bc0c02cfb12ce1a521e25064956dd12f3e38fca3d841c538723a0"
+
+[[package]]
+name = "openzeppelin_access"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+dependencies = [
+ "openzeppelin_introspection",
+ "openzeppelin_utils",
+]
+
+[[package]]
+name = "openzeppelin_account"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+dependencies = [
+ "openzeppelin_introspection",
+ "openzeppelin_utils",
+]
+
+[[package]]
+name = "openzeppelin_governance"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+dependencies = [
+ "openzeppelin_access",
+ "openzeppelin_introspection",
+]
+
+[[package]]
+name = "openzeppelin_introspection"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+
+[[package]]
+name = "openzeppelin_token"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+dependencies = [
+ "openzeppelin_account",
+ "openzeppelin_governance",
+ "openzeppelin_introspection",
+]
+
+[[package]]
+name = "openzeppelin_utils"
+version = "0.16.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.16.0#ba00ce76a93dcf25c081ab2698da20690b5a1cfb"
+
+[[package]]
 name = "snforge_scarb_plugin"
 version = "0.32.0"
 source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.32.0#3817c903b640201c72e743b9bbe70a97149828a2"
@@ -18,5 +71,7 @@ dependencies = [
 name = "spqr"
 version = "0.1.0"
 dependencies = [
+ "integrity",
+ "openzeppelin_token",
  "snforge_std",
 ]
