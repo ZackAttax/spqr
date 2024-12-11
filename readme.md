@@ -1,0 +1,5 @@
+`shield args`
+note_hash
+`0x754ac441612445c48d79fa5bb22c5e2560c4ba44965436d08acfd3d91cf5cca`
+residue
+`0x0, 0x5, 0x2a, 0x0, 0x545d6f7d28a8a398e543948be5a026af60c4dea482867a6eeb2525b35d1e1e1, 0x7b`
