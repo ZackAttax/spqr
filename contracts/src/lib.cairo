@@ -85,7 +85,7 @@ use spqr::ISpqr;
             self.notes.entry(note_hash).write(NOTE_STATUS_UNSPENT)
         }
         fn unshield_amount(ref self: ContractState, receiver: ContractAddress, amount: u256, note_hash: felt252, residue: Array<felt252>) {
-            let output = [0x0, 0x4, 0x2, note_hash, amount.high.into(), amount.low.into(), receiver.into()].span();
+            let output = [0x0, 0x5, 0x2, note_hash, amount.high.into(), amount.low.into(), receiver.into()].span();
 
             let mut output_hash = PoseidonTrait::new();
             for element in output {
@@ -112,7 +112,7 @@ use spqr::ISpqr;
             let res = integrity.is_fact_hash_valid(fact_hash);
             assert(res, 'Fact is not valid');
             let erc20_dispatcher = IERC20Dispatcher{contract_address: self.erc20_address.read()};
-            assert(erc20_dispatcher.transfer_from(sender: get_contract_address(), recipient: get_caller_address(), amount: amount), 'Transfer failed');
+            assert(erc20_dispatcher.transfer_from(sender: get_contract_address(), recipient: receiver, amount: amount), 'Transfer failed');
             self.notes.entry(note_hash).write(NOTE_STATUS_UNSPENT)
         }
         fn transfer(
