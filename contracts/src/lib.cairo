@@ -3,7 +3,7 @@ use starknet::ContractAddress;
 pub trait ISpqr<TState> {
 
     fn shield_amount(ref self: TState, amount: u256, note_hash: felt252, residue: Array<felt252>);
-    fn unshield_amount(ref self: TState, reciever: ContractAddress, amount: u256, note_hash: felt252, residue: Array<felt252>);
+    fn unshield_amount(ref self: TState, receiver: ContractAddress, amount: u256, note_hash: felt252, residue: Array<felt252>);
     fn transfer(
         ref self: TState,
         note_hash_1: felt252,
@@ -84,8 +84,8 @@ use spqr::ISpqr;
             assert(erc20_dispatcher.transfer(recipient: get_contract_address(), amount: amount), 'Transfer failed');
             self.notes.entry(note_hash).write(NOTE_STATUS_UNSPENT)
         }
-        fn unshield_amount(ref self: ContractState, reciever: ContractAddress, amount: u256, note_hash: felt252, residue: Array<felt252>) {
-            let output = [0x0, 0x4, 0x2, note_hash, amount.high.into(), amount.low.into()].span();
+        fn unshield_amount(ref self: ContractState, receiver: ContractAddress, amount: u256, note_hash: felt252, residue: Array<felt252>) {
+            let output = [0x0, 0x4, 0x2, note_hash, amount.high.into(), amount.low.into(), receiver.into()].span();
 
             let mut output_hash = PoseidonTrait::new();
             for element in output {
