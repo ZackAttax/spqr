@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { connect, disconnect } from "starknetkit";
+import "./App.css";
 
 function App() {
+  const [connection, setConnection] = useState();
+  const [address, setAddress] = useState("");
+
+  const connectWallet = async () => {
+    const { wallet, connectorData } = await connect({});
+
+    if (wallet && connectorData) {
+      setConnection(wallet);
+      setAddress(connectorData.account);
+    }
+  };
+
+  const disconnectWallet = async () => {
+    await disconnect();
+    setConnection(undefined);
+    setAddress("");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!connection ? (
+        <button onClick={connectWallet}>Connect Wallet</button>
+      ) : (
+        <div>
+          <p>Connected Address: {address}</p>
+          <button onClick={disconnectWallet}>Disconnect</button>
+        </div>
+      )}
     </div>
   );
 }
