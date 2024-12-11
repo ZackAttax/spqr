@@ -21,16 +21,28 @@ function App() {
     setAddress("");
   };
 
+  const fmtAddress = (address) => {
+    return address.slice(0, 6) + "..." + address.slice(-4);
+  };
+
   return (
     <div className="App">
-      {!connection ? (
-        <button onClick={connectWallet}>Connect Wallet</button>
-      ) : (
-        <div>
-          <p>Connected Address: {address}</p>
-          <button onClick={disconnectWallet}>Disconnect</button>
+      <div className="navigation">
+        <div className="logo">SPQR</div>
+        <div className="menu">
+          {!connection ? (
+            <button className="wallet-btn" onClick={connectWallet}>
+              Connect Wallet
+            </button>
+          ) : (
+            <div>
+              <button className="wallet-btn" onClick={disconnectWallet}>
+                Disconnect (Address: {fmtAddress(address)})
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

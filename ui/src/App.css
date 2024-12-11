@@ -1,0 +1,36 @@
+.navigation {
+    display: flex;
+height: 65px;
+padding: var(--padding-24, 24px) var(--padding-32, 32px);
+justify-content: flex-end;
+align-items: center;
+gap: var(--16, 16px);
+align-self: stretch;
+border-bottom: 1px solid var(--Border-Colors-border-200, #E4E7EC);
+}
+
+.logo {
+    display: flex;
+align-items: center;
+gap: var(--6, 6px);
+flex: 1 0 0;
+}
+
+.menu {
+    color: white;
+}
+
+.wallet-btn {
+    border: none;
+    display: flex;
+    color: white;
+padding: var(--padding-8, 8px) var(--padding-16, 16px);
+justify-content: center;
+align-items: center;
+gap: var(--8, 8px);
+border-radius: var(--radius-s, 8px);
+background: var(--Background-Colors-bg-primary-500, black);
+
+/* Effects/Shadows/button-shadow */
+box-shadow: 0px 1px 2px 0px var(--Effects-shadow-button, rgba(20, 28, 37, 0.04));
+}
