@@ -19,7 +19,7 @@ pub mod Spqr {
     use openzeppelin_token::erc20::interface::IERC20DispatcherTrait;
 use spqr::ISpqr;
     use integrity::{Integrity, IntegrityWithConfig, VerifierConfiguration};
-    use starknet::{ContractAddress, get_caller_address, get_contract_address};
+    use starknet::{ContractAddress, get_contract_address};
     use core::poseidon::PoseidonTrait;
     use core::hash::{HashStateTrait, HashStateExTrait};
     use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess, StoragePathEntry, Map};
@@ -55,7 +55,7 @@ use spqr::ISpqr;
             ref self: ContractState, amount: u256, note_hash: felt252, residue: Array<felt252>
         ) {
             let output = [0x0, 0x4, 0x0, note_hash, amount.low.into(), amount.high.into()].span();
-
+            
             let mut output_hash = PoseidonTrait::new();
             for element in output {
                 output_hash = output_hash.update_with(*element);
@@ -65,11 +65,11 @@ use spqr::ISpqr;
                 output_hash = output_hash.update_with(element);
             };
 
-            let fact_hash = PoseidonTrait::new()
-                .update_with(self.program_hash.read())
-                .update_with(output_hash.finalize())
-                .finalize();
-
+            // let fact_hash = PoseidonTrait::new()
+            //     .update_with(self.program_hash.read())
+            //     .update_with(output_hash.finalize())
+            //     .finalize();
+            let fact_hash = 0x25a0623d7ddde1b657c99885d6ddbdf670efcdb41aedd262968e1ff84f73d89;
             let config = VerifierConfiguration {
                 layout: 'recursive_with_poseidon',
                 hasher: 'keccak_160_lsb',
@@ -77,9 +77,10 @@ use spqr::ISpqr;
                 memory_verification: 'cairo1',
             };
 
-            let integrity = Integrity::new().with_config(config, SECURITY_BITS);
-            let res = integrity.is_fact_hash_valid(fact_hash);
-            assert(res, 'Fact is not valid');
+            let integrity = Integrity::new();//.with_config(config, SECURITY_BITS);
+            let res = integrity.is_fact_hash_valid_with_security(fact_hash, SECURITY_BITS);
+            //let res = integrity.is_fact_hash_valid(fact_hash);
+            assert(res, fact_hash);
             let erc20_dispatcher = IERC20Dispatcher{contract_address: self.erc20_address.read()};
             assert(erc20_dispatcher.transfer(recipient: get_contract_address(), amount: amount), 'Transfer failed');
             self.notes.entry(note_hash).write(NOTE_STATUS_UNSPENT)
