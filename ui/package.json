@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@figma/code-connect": "^1.2.4",
+    "@starknet-react/chains": "^3.1.0",
+    "@starknet-react/core": "^3.6.2",
     "cra-template": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
     "starknetkit": "^2.6.1"
   },
