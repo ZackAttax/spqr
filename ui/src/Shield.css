@@ -1,7 +1,5 @@
 .Shield {
     display: flex;
-width: 1440px;
-height: 1054px;
 padding: 140px 10px 10px 10px;
 flex-direction: column;
 align-items: flex-start;
@@ -9,24 +7,65 @@ gap: 10px;
 flex-shrink: 0;
 }
 
-.Shield .group {
-    width: 404px;
-    height: 208px;
-}
-
-.Shield h1 {
+.Shield button {
+    cursor: pointer;
+    border: none;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+padding: var(--padding-8, 8px) var(--padding-16, 16px);
+justify-content: center;
+align-items: center;
+gap: var(--8, 8px);
+border-radius: var(--radius-s, 8px);
+background: var(--Background-Colors-bg-primary-500, black);
+
+/* Effects/Shadows/button-shadow */
+box-shadow: 0px 1px 2px 0px var(--Effects-shadow-button, rgba(20, 28, 37, 0.04));
 }
 
 .Shield input {
     display: flex;
-width: 420px;
+width: 200px;
 flex-direction: column;
 align-items: flex-start;
 gap: var(--8, 8px);
+}
+
+.balance {
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--Border-Colors-border-200, #E4E7EC);
+    border-radius: 10px;
+}
+
+.label {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 40px;
+    text-align: center;
+    font-size: 12px;
+    background: #005CE5;
+    color: white;
+    padding: 5px;
+}
+
+.label-private {
+    background: black ;
+}
+
+.balance-private button {
+    border: 1px solid black;
+    background: white;
+    color: black;
+}
+
+.balance-private {
+    width: 200px;
+}
+
+.balance {
+    display: inline-block;
 }

@@ -34,3 +34,7 @@ background: var(--Background-Colors-bg-primary-500, black);
 /* Effects/Shadows/button-shadow */
 box-shadow: 0px 1px 2px 0px var(--Effects-shadow-button, rgba(20, 28, 37, 0.04));
 }
+
+.plz-connect {
+    text-align: center;
+}

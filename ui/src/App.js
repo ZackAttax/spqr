@@ -8,7 +8,6 @@ function App() {
   const [address, setAddress] = useState("");
 
   const connectWallet = async () => {
-    alert("connecting");
     const response = await connect({
       modalMode: "alwaysAsk",
       modalTheme: "light",
@@ -22,18 +21,6 @@ function App() {
         rpcUrl: "https://starknet-mainnet.public.blastapi.io",
       },
     });
-
-    if (response) {
-      alert("response");
-    }
-
-    if (response.wallet) {
-      alert("wallet");
-    }
-
-    if (response.connectorData) {
-      alert("connectorData");
-    }
 
     if (response.wallet && response.connectorData) {
       setConnection(response.wallet);
@@ -69,7 +56,11 @@ function App() {
           )}
         </div>
       </div>
-      <Shield />
+      {connection ? (
+        <Shield />
+      ) : (
+        <div className="plz-connect">Please connect your wallet</div>
+      )}
     </div>
   );
 }
