@@ -7,11 +7,36 @@ function App() {
   const [address, setAddress] = useState("");
 
   const connectWallet = async () => {
-    const { wallet, connectorData } = await connect({});
+    alert("connecting");
+    const response = await connect({
+      modalMode: "alwaysAsk",
+      modalTheme: "light",
+      webWalletUrl: "https://web.argent.xyz",
+      argentMobileOptions: {
+        dappName: "Hackathon SPQR",
+        projectId: "3a80b8d6b01bb78fc36abe41c78fbada", // wallet connect project id
+        chainId: "SN_MAIN",
+        url: window.location.hostname,
+        icons: ["https://your-icon-url.com"],
+        rpcUrl: "https://starknet-mainnet.public.blastapi.io",
+      },
+    });
 
-    if (wallet && connectorData) {
-      setConnection(wallet);
-      setAddress(connectorData.account);
+    if (response) {
+      alert("response");
+    }
+
+    if (response.wallet) {
+      alert("wallet");
+    }
+
+    if (response.connectorData) {
+      alert("connectorData");
+    }
+
+    if (response.wallet && response.connectorData) {
+      setConnection(response.wallet);
+      setAddress(response.connectorData.account);
     }
   };
 
