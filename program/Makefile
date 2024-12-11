@@ -1,11 +1,20 @@
 build:
 	scarb --profile cairo1-run build --package spqr
 
+shield-args:
+	python scripts/generate_arguments.py shield --amount 42 --spending_pk 0x545d6f7d28a8a398e543948be5a026af60c4dea482867a6eeb2525b35d1e1e1 --nonce 123 > target/args.txt
+
+transfer-args:
+	python scripts/generate_arguments.py transfer --input_amount 42 --spending_sk 0x0 --input_nonce 123 --output_amount 21 --output_spending_pk 0x545d6f7d28a8a398e543948be5a026af60c4dea482867a6eeb2525b35d1e1e1 --output_nonce 321 --change_output_nonce 234 > target/args.txt
+
+unshield-args:
+	python scripts/generate_arguments.py unshield --amount 42 --spending_sk 0x0 --nonce 123 > target/args.txt
+
 dryrun:
-	cairo1-run target/cairo1-run/spqr.sierra.json --layout recursive_with_poseidon --args '[]' --print_output
+	cairo1-run target/cairo1-run/spqr.sierra.json --layout recursive_with_poseidon --args_file target/args.txt --print_output
 
 artifacts:
-	cairo1-run target/cairo1-run/spqr.sierra.json --layout recursive_with_poseidon --args '[]' --proof_mode --air_public_input target/public_input.json --air_private_input target/private_input.json --trace_file target/trace --memory_file target/memory
+	cairo1-run target/cairo1-run/spqr.sierra.json --layout recursive_with_poseidon --args_file target/args.txt --proof_mode --air_public_input target/public_input.json --air_private_input target/private_input.json --trace_file target/trace --memory_file target/memory
 
 params:
 	python scripts/generate_params.py --desired-degree-bound ${BOUND} --last-layer-degree-bound 128 > prover_params.json

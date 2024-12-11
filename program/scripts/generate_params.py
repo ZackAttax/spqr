@@ -41,7 +41,7 @@ def calculate_fri_step_list(desired_degree_bound: int, last_layer_degree_bound: 
             
         return power
 
-    fri_step_list = []
+    fri_step_list = [0]
     highest_power_of_2 = highest_power_of_2_in(to_process)
 
     while True:
