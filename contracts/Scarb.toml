@@ -7,6 +7,8 @@ edition = "2023_11"
 
 [dependencies]
 starknet = "2.8.5"
+integrity = "2.0.0"
+openzeppelin_token = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.16.0" }
 
 [dev-dependencies]
 snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.32.0" }
@@ -36,7 +38,7 @@ test = "snforge test"
 # block_id.number = "123"                                    # Block to fork from (block number)
 
 # [[tool.snforge.fork]]
-# name = "SOME_THIRD_NAME"
+# name = "SOME_THIRD_NAME" 
 # url = "http://your.third.rpc.url"
 # block_id.hash = "0x123"                                    # Block to fork from (block hash)
 
