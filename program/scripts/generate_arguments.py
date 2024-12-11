@@ -58,6 +58,7 @@ def generate_unshield_args(args):
                 "nonce": args.nonce,
             },
             "spending_sk": args.spending_sk,
+            "receiver_address": args.receiver_address,
         }
     }
     print(format_cairo1_run(flatten_tuples(serialize(res))))
@@ -68,7 +69,7 @@ def serialize(obj):
     Supports the following conversions:
         integer -> int  # felt252
         dec string (0-9) -> (int, int) -> u256 = { lo: felt252, hi: felt252 }
-        str -> hash  # felt252
+        str (0x) -> hash  # felt252
         list -> tuple(len(list), *list)
         dict -> tuple(dict.values)
     """
@@ -172,6 +173,7 @@ if __name__ == "__main__":
     parser_c.add_argument("--amount", type=int, required=True, help="Token amount")
     parser_c.add_argument("--spending_sk", type=str, required=True, help="Secret key of the spender")
     parser_c.add_argument("--nonce", type=int, required=True, help="Random nonce (private)")
+    parser_c.add_argument("--receiver_address", type=str, required=True, help="Address of the receiver of ERC20 token")
     parser_c.set_defaults(func=generate_unshield_args)
 
     args = parser.parse_args()

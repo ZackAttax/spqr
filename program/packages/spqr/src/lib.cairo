@@ -1,6 +1,7 @@
 use core::hash::{HashStateTrait, HashStateExTrait, Hash};
 use core::poseidon::{PoseidonTrait, HashState};
 use core::serde::Serde;
+use starknet::ContractAddress;
 
 #[derive(Drop, Serde, Debug)]
 enum Arguments {
@@ -34,6 +35,7 @@ struct TransferArguments {
 struct UnshieldArguments {
     input_note: Note,
     spending_sk: felt252,
+    receiver_address: ContractAddress,
 }
 
 #[derive(Drop, Serde, Debug, Hash)]
@@ -61,11 +63,13 @@ struct TransferResult {
 struct UnshieldResult {
     input_note_commitment: felt252,
     amount: u256,
+    receiver_address: ContractAddress,
 }
 
 fn main(mut arguments: Array<felt252>) -> Array<felt252> {
-    let mut args = arguments.span();
-    let args: Arguments = Serde::deserialize(ref args).expect('Failed to deserialize');
+    let mut arguments = arguments.span();
+    let args: Arguments = Serde::deserialize(ref arguments).expect('Failed to deserialize');
+    assert(arguments.is_empty(), 'deserialization error');
 
     let result: Result = match args {
         Arguments::Shield(shield_args) => {
@@ -97,6 +101,7 @@ fn main(mut arguments: Array<felt252>) -> Array<felt252> {
             Result::Unshield(UnshieldResult {
                 amount: unshield_args.input_note.amount,
                 input_note_commitment: poseidon_hash(unshield_args.input_note),
+                receiver_address: unshield_args.receiver_address,
             })
         }
     };
