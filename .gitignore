@@ -1,2 +1,5 @@
-contract/spqr/.snfoundry_cache/
-contracts/spqr/target
+contracts/.snfoundry_cache/
+contracts/target
+program/target
+!program/target/*.json
+.DS_Store

@@ -1,0 +1,54 @@
+{
+  "trace_path": "/Users/michaelzaikin/spqr/program/target/trace",
+  "memory_path": "/Users/michaelzaikin/spqr/program/target/memory",
+  "pedersen": [],
+  "range_check": [
+    {
+      "index": 0,
+      "value": "0x15"
+    },
+    {
+      "index": 1,
+      "value": "0x0"
+    },
+    {
+      "index": 2,
+      "value": "0x34c488dc0bdcc0a81b2965ce63da06f4"
+    },
+    {
+      "index": 3,
+      "value": "0x1798065f9b8e719e293180b493b91f7"
+    },
+    {
+      "index": 4,
+      "value": "0xf9798065f9b8e719e293180b493b91f7"
+    }
+  ],
+  "bitwise": [],
+  "poseidon": [
+    {
+      "index": 0,
+      "input_s0": "0x1",
+      "input_s1": "0x1",
+      "input_s2": "0x0"
+    },
+    {
+      "index": 1,
+      "input_s0": "0x15",
+      "input_s1": "0x0",
+      "input_s2": "0x0"
+    },
+    {
+      "index": 2,
+      "input_s0": "0x5cc61cbe290a0362dcd2792c28aec96aa1c24b721d9f5121401aac6a7b94ba6",
+      "input_s1": "0xaf106297d536272a2ca63d9a66c16173e72dc5cc90bf9f451d517606e0918a",
+      "input_s2": "0x7792cfcf9595e667322297b9a9bee1969b36543b212fbf9f7586c9cc7e9a265"
+    },
+    {
+      "index": 3,
+      "input_s0": "0x11400ea61ecdbf281e566fa14f3bfb3c3d9433411030f0e94aeb162aa20e0f0",
+      "input_s1": "0x5b25e5fa40616e10c6bfb4e0081a4d53379285ed8aad930c3bab530a8735da2",
+      "input_s2": "0x63c4aaef44d511ce987ec8811b13acfd42d0f6dd2be8d6c7ffe562dd00bdad"
+    }
+  ]
+}

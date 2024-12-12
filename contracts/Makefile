@@ -1,4 +1,5 @@
 declare:
 	sncast declare --package spqr --fee-token eth --contract-name Spqr
+
 deploy:
-	sncast deploy --fee-token eth --class-hash 0x3ceb6a1dfa228c4021f1376d80be485a5f15a864ba37edf630d613663b29a01  --constructor-calldata 0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d 0x16409cfef9b6c3e6002133b61c59d09484594b37b8e4daef7dcba5495a0ef1a 0x3fdf057feea8950c3fa8c6fcdda0d51057ad1dc496c0ba532a259fbf1b8edd9
+	sncast deploy --fee-token eth --class-hash 0x04a1f6049bf54ca76976887abc0021569e99e6807f87e55744153d5577e5bcba --constructor-calldata 0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d 0x16409cfef9b6c3e6002133b61c59d09484594b37b8e4daef7dcba5495a0ef1a 0x3fdf057feea8950c3fa8c6fcdda0d51057ad1dc496c0ba532a259fbf1b8edd9

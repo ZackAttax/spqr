@@ -5,10 +5,10 @@ shield-args:
 	python scripts/generate_arguments.py shield --amount 42 --spending_pk 0x545d6f7d28a8a398e543948be5a026af60c4dea482867a6eeb2525b35d1e1e1 --nonce 123 > target/args.txt
 
 transfer-args:
-	python scripts/generate_arguments.py transfer --input_amount 42 --spending_sk 0x0 --input_nonce 123 --output_amount 21 --output_spending_pk 0x545d6f7d28a8a398e543948be5a026af60c4dea482867a6eeb2525b35d1e1e1 --output_nonce 321 --change_output_nonce 234 > target/args.txt
+	python scripts/generate_arguments.py transfer --input_amount 42 --spending_sk 0x0 --input_nonce 123 --output_amount 21 --output_spending_pk 0x579e8877c7755365d5ec1ec7d3a94a457eff5d1f40482bbe9729c064cdead2 --output_nonce 321 --change_output_nonce 234 > target/args.txt
 
 unshield-args:
-	python scripts/generate_arguments.py unshield --amount 42 --spending_sk 0x0 --nonce 123 --receiver_address 0x1a62446e05ee60540d94b2e731ed037a1798065f9b8e719e293180b493b91f7 > target/args.txt
+	python scripts/generate_arguments.py unshield --amount 21 --spending_sk 0x1 --nonce 321 --receiver_address 0x1a62446e05ee60540d94b2e731ed037a1798065f9b8e719e293180b493b91f7 > target/args.txt
 
 dryrun:
 	cairo1-run target/cairo1-run/spqr.sierra.json --layout recursive_with_poseidon --args_file target/args.txt --print_output
