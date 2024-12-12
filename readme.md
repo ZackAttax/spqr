@@ -14,14 +14,16 @@ SPQR is implemented as a single Starknet contract that interacts with the follow
 
 It is envisioned to use fee subsidization to break the link between Starknet accounts and crypto notes, however the current PoC does not implement this logic.
 
-Read more about [SPQR contract >>>](./contracts/)
+* Read more about [SPQR contract](./contracts/)
+* Check Sepolia [deployment](https://sepolia.voyager.online/contract/0x05a10ca183a645a0edb7168d02f44ddfd7dfdb4ad84f2a5a7a9d36614e439ceb#accountCalls)
 
 ![](./docs/assets/spqr_contracts.svg)
 
 UTXO model is used for shielded accounts.
 Shielded transactions are created and stored on the client and not broadcasted to keep the information about the sender, receiver, and amount private. A proof of validity is generated (also on the client) and submitted onchain to prevent double spending. The smart contract only stores the hashes of crypto notes (UTXOs) and relies on proofs to enforce integrity.
 
-Read more about [SPQR program >>>](./program/)
+* Read more about [SPQR program](./program/)
+* Check out registered [facts](https://sepolia.voyager.online/contract/0x16409cfef9b6c3e6002133b61c59d09484594b37b8e4daef7dcba5495a0ef1a#accountCalls)
 
 ![](./docs/assets/spqr_programs.svg)
 
