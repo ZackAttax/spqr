@@ -56,11 +56,19 @@ make deploy
 
 ### Approve STRK
 
-Go to https://sepolia.voyager.online/contract/0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d#writeContract (STRK token contract), select "approve", enter the deployed contract address and the amount of tokens.
+Update the contract address in the Makefile if necessary and run:
+
+```sh
+make approve
+```
 
 ### Shield
 
-Go to the contract page, e.g. https://sepolia.voyager.online/contract/0x00d02030c9964d185dbd80047f1fc95e949b68e0dacf0ba05071cbfcd36265b8#writeContract
+```sh
+make shield
+```
+
+Alternatively, go to the contract page, e.g. https://sepolia.voyager.online/contract/0x05c4682151c3f78e67d9f8ab5991bf8d07c93c1f0a01fc6b0a86137b96b4656d#writeContract
 
 Select "shield_amount" entrypoint.
 
@@ -71,9 +79,11 @@ Enter the parameters:
 
 ### Transfer
 
-Select "transfer" entrypoint.
+```sh
+make transfer
+```
 
-Enter the parameters:
+Alternatively, select "transfer" entrypoint and enter the parameters:
 - `note_hash_1` (0x754ac441612445c48d79fa5bb22c5e2560c4ba44965436d08acfd3d91cf5cca)
 - `note_hash_2` (0xe2b33228cfa7d1395a3210d97e1d57af7921646b91aea80b97caa310fa9706)
 - `note_hash_3` (0x180e9e64505e61d9fd87a2f60b443971862197d2396038620b99a936eea7f79)
@@ -82,9 +92,11 @@ Enter the parameters:
 
 ### Unshield
 
-Select "unshield" entrypoint.
+```sh
+make unshield
+```
 
-Enter the parameters:
+Alternatively, select "unshield" entrypoint and Enter the parameters:
 - `amount` (21)
 - `note_hash` (0x180e9e64505e61d9fd87a2f60b443971862197d2396038620b99a936eea7f79) — spent note
 - `receiver` (0x1a62446e05ee60540d94b2e731ed037a1798065f9b8e719e293180b493b91f7) — the Starknet address of the receiver of ERC20 token
